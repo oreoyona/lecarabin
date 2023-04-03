@@ -1,0 +1,13 @@
+.app-container{
+    display: grid;
+    grid-template-columns: repeat(1fr, 12);
+    height: 100%;
+    width: 100%;
+
+    .app-header, .app-footer{
+        grid-column: 1/-1;
+    }
+    .app-container-body{
+        grid-column: 1/-1;
+    }
+}
