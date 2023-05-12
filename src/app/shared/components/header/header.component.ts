@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MenuComponent } from './menu/menu.component';
+import { SearchComponent } from './search/search.component';
 
 @Component({
   selector: 'app-header',
@@ -18,11 +19,10 @@ export class HeaderComponent {
   }
   openMenu = () =>{
     this.dialog.open(MenuComponent, this.config)
-
   }
 
   openSearch = () => {
-
+    this.dialog.open(SearchComponent, {height: "100vh", width: "40vw",position: {top: '0', right: '0'}})
   }
 
 
