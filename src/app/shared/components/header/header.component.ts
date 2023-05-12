@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit, OnChanges {
     this.dialog.open(SearchComponent, {
       height: "100vh", width: this.widthValue,
       position: { top: '0', right: '0' },
-      panelClass: "actualContainer"
 
     })
   }

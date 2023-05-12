@@ -1,4 +1,12 @@
+@import './colors.scss';
 html, body{padding: 0;margin: 0; height: 100%;}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+app-header-search, app-header-menu{
+  background-color: $light-cyan;
+}
+app-header{
+  height: 10vh;
+}
 
