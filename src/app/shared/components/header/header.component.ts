@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MenuComponent } from './menu/menu.component';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +9,22 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  logo = "/assets/lecarabin-logo.svg"
+  logo = "/assets/lecarabin-logo.svg";
+  config: MatDialogConfig = {
+    height: "100vh",
+    width: "40vw",
+    position: {top: "0", left: '0'}
+
+  }
+  openMenu = () =>{
+    this.dialog.open(MenuComponent, this.config)
+
+  }
+
+  openSearch = () => {
+
+  }
+
+
+  constructor(public dialog: MatDialog){}
 }
