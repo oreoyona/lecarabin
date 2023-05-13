@@ -7,6 +7,6 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-
+  categories = ['Opinions', 'Actualites', 'Cas Cliniques', 'Livres']
 
 }

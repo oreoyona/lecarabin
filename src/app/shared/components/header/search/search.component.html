@@ -1,3 +1,9 @@
 <section>
-  <p>Search is working</p>
+  <mat-form-field class="searchInput">
+    <mat-label>Rechercher sur lecarabin</mat-label>
+    <input matInput type="text" [(ngModel)]="value" placeholder={{value}}>
+    <button type="submit" matSuffix mat-icon-button aria-label="Clear" (click)="onSubmit()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
 </section>

@@ -7,5 +7,9 @@ import { Component } from "@angular/core";
 
 })
 export class SearchComponent{
+  value = "";
+  onSubmit = ()=>{
+    console.log(this.value)
+  }
 
 }

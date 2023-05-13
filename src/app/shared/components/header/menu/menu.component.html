@@ -1,3 +1,5 @@
 <section id="menuContainer">
-  <p>Menu works</p>
+  <mat-list role="list" *ngFor="let categorie of categories">
+    <mat-list-item role="listitem" routerLinkActive="active"><button mat-button>{{categorie}}</button></mat-list-item>
+  </mat-list>
 </section>
