@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { MainComponent } from './home/main/main.component';
 import { RightSideComponent } from './home/right-side/right-side.component';
 import { LeftSideComponent } from './home/left-side/left-side.component';
+import { ArticleComponent } from './home/article/article.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { LeftSideComponent } from './home/left-side/left-side.component';
     HomeComponent,
     MainComponent,
     RightSideComponent,
-    LeftSideComponent
+    LeftSideComponent,
+    ArticleComponent
   ],
   imports: [
     CommonModule,
