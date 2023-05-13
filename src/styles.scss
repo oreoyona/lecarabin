@@ -3,11 +3,10 @@ html, body{padding: 0;margin: 0; height: 100%;}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-app-header-menu{
+app-header-menu, app-header-search{
   background-color: $light-cyan;
 }
 app-header-search{
-  background-color: gray;
   filter: opacity(1);
 }
 
