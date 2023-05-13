@@ -1,9 +1,11 @@
 <section>
-  <mat-form-field class="searchInput">
-    <mat-label>Rechercher sur lecarabin</mat-label>
-    <input matInput type="text" [(ngModel)]="value" placeholder={{value}}>
-    <button type="submit" matSuffix mat-icon-button aria-label="Clear" (click)="onSubmit()">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="searchInput" >
+    <mat-label id="matLabel">Rechercher sur lecarabin</mat-label>
+    <input matInput type="text" formControlName="term" placeholder="rechercher">
+    <button type= "button" matSuffix mat-icon-button aria-label="Clear" (click)="onSubmit()">
       <mat-icon>search</mat-icon>
     </button>
   </mat-form-field>
+  </form>
 </section>

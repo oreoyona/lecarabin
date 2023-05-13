@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-header-search',
@@ -7,9 +8,12 @@ import { Component } from "@angular/core";
 
 })
 export class SearchComponent{
-  value = "";
+  searchForm = new FormGroup({
+    term : new FormControl("", Validators.required)
+})
+
   onSubmit = ()=>{
-    console.log(this.value)
+    if(this.searchForm.valid){console.log(this.searchForm.value); this.searchForm.reset()}
   }
 
 }
