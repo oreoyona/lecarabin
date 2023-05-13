@@ -13,7 +13,9 @@ export class SearchComponent{
 })
 
   onSubmit = ()=>{
-    if(this.searchForm.valid){console.log(this.searchForm.value); this.searchForm.reset()}
+    if(this.searchForm.valid){
+      //TODO: #1 Connect to the server
+       this.searchForm.reset()}
   }
 
 }
