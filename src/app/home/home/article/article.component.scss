@@ -1,7 +1,7 @@
 .article-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
     background-color: white;
     border-radius: 30%;
 
@@ -10,5 +10,9 @@
         width: 100%;
         background-color: brown;
         content: '';
+    }
+
+    .article-title {
+        padding: 12px 0;
     }
 }
