@@ -1,0 +1,18 @@
+.article-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 30%;
+
+    .article-banner {
+        height: 70vh;
+        width: 100%;
+        background-color: brown;
+        content: '';
+    }
+
+    .article-title {
+        padding: 12px 0;
+    }
+}
