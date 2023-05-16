@@ -2,7 +2,7 @@
 .app-container{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 10vh auto;
+    grid-template-rows: max-content auto;
     min-height: 100%;
     width: 100%;
     row-gap: 10px;
