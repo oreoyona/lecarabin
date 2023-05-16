@@ -1,18 +1,30 @@
+:host{
+  width: 100%;
+  height: 100%;
+}
 .article-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: white;
-    border-radius: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-self: center;
+  background-color: green;
+  width: 90%;
+  height: 100%;
+  cursor: pointer;
 
-    .article-banner {
-        height: 70vh;
-        width: 100%;
-        background-color: brown;
-        content: '';
+  .article-title {
+    padding: 0 12px;
+    text-overflow: ellipsis;
+    >*{
+      font-size: 2.2rem;
     }
-
-    .article-title {
-        padding: 12px 0;
-    }
+  }
+  .article-author{
+    padding: 0 12px;
+  }
+}
+.article-container:hover{
+  .article-title{
+    text-decoration: solid 2px  white underline;
+  }
 }

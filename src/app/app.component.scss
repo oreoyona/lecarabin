@@ -2,17 +2,18 @@
 .app-container{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 11vh auto;
-    height: 100%;
+    grid-template-rows: 10vh auto;
+    min-height: 100%;
     width: 100%;
+    row-gap: 10px;
 
     app-header, .app-footer{
         grid-column: 1/-1;
         display: flex;
     }
     .app-container-body{
-
         grid-column: 1/-1;
+        grid-row: 2;
         background-color: $white-one;
     }
 }
