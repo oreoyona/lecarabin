@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./article.component.scss']
 })
 export class ArticleComponent {
-
+  imageUrl = "assets/R.jpeg"
 }
