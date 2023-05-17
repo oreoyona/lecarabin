@@ -12,6 +12,8 @@
   justify-content: flex-end;
   align-self: center;
   width: 90%;
+  z-index: 3;
+  overflow: hidden;
   height: 100%;
   cursor: pointer;
   .article-title {
@@ -24,6 +26,7 @@
   }
   .article-author{
     padding: 0 12px;
+    color: $white-one;
   }
 }
 .article-container:hover{
@@ -34,6 +37,7 @@
 
 i{
   padding-right: 5px;
+  color: white;
 }
 
 .article-tag{

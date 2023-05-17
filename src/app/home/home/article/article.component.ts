@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class ArticleComponent {
   imageUrl = "assets/R.jpeg"
+
+  constructor(){
+
+  }
+
 }
