@@ -1,10 +1,13 @@
-<section class="article-container" [ngStyle]="{'background': 'url('+ imageUrl +') no-repeat', 'background-size': 'cover'}">
-  <span class="article-tag">some tagthat is not very long</span>
-  <section class="article-title">
-    <h2>Some title are just very long and until ou can tell the browser to do exactly what you do</h2>
+<section class="article-main-container">
+  <section class="article-container"
+  [ngStyle]="{'background': 'url('+ imageUrl +') no-repeat',
+  'background-size': 'cover', 'height.px': containerHeight, 'height.vh': heightVh}">
+    <span class="article-tag">some tagthat is not very long</span>
+    <section class="article-title">
+      <h2>Some title are just very long and until ou can tell the browser to do exactly what you do</h2>
+    </section>
+    <section class="article-author">
+      <p><i>Par</i> Gloire Chabu</p>
+    </section>
   </section>
-  <section class="article-author">
-    <p><i>Par</i> Gloire Chabu</p>
-  </section>
-
 </section>

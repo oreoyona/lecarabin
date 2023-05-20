@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-
+  offset = 1;
+  limit = 2;
 }

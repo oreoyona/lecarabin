@@ -1,5 +1,7 @@
-<!--//TODO #2-->
-
  <section class="main-container">
-    <app-article></app-article>
+    <app-article [offset]="0" [heightVh]="100"></app-article>
+    <section class="second-row-article">
+      <app-article [offset]="1" [containerHeight]="300"/>
+      <app-article [offset]="2" [containerHeight]="300"/>
+    </section>
  </section>

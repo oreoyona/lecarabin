@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-imageless-article',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./imageless-article.component.scss']
 })
 export class ImagelessArticleComponent {
-
+  @Input () title!:string;
 }

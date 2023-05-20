@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./right-side.component.scss']
 })
 export class RightSideComponent {
-
+  pageTitle = "Right Side Component"
 }
