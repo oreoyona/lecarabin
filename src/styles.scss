@@ -1,4 +1,9 @@
 @import './colors.scss';
+@media screen and (max-width: 800px){
+  app-main{
+    height: 100%;
+  }
+}
 html, body{padding: 0;margin: 0; height: 100%;}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

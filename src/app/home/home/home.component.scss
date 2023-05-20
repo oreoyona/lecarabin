@@ -1,7 +1,20 @@
-
-section{
-  display: grid;
-  grid-template-columns: 25% 50% 25%;
-  padding: 15px;
-  height: 100%;
+@media screen and (max-width: 800px){
+  section{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    app-left-side, app-right-side{
+      display: none;
+    }
+  }
 }
+
+@media  screen and (min-width: 801px) {
+  section{
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    padding: 15px;
+    height: 100%;
+  }
+}
+
