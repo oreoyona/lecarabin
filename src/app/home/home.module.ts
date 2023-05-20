@@ -8,6 +8,7 @@ import { MainComponent } from './home/main/main.component';
 import { RightSideComponent } from './home/right-side/right-side.component';
 import { LeftSideComponent } from './home/left-side/left-side.component';
 import { ArticleComponent } from './home/article/article.component';
+import { ImagelessArticleComponent } from './home/imageless-article/imageless-article.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ArticleComponent } from './home/article/article.component';
     MainComponent,
     RightSideComponent,
     LeftSideComponent,
-    ArticleComponent
+    ArticleComponent,
+    ImagelessArticleComponent
   ],
   imports: [
     CommonModule,

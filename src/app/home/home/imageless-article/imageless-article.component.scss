@@ -1,0 +1,18 @@
+@import '../../../../colors.scss';
+
+.container {
+  background-color: white;
+  height: 100%;
+  border-top: 4px solid $primary-cyan;
+}
+.title{
+  display: flex;
+  align-items: center;
+}
+.separator {
+  width: 100%;
+}
+h2{
+  transform: translateY(12px);
+  padding: 0 15px;
+}
