@@ -1,5 +1,9 @@
 @import '../../../../colors.scss';
-
+@media screen and (max-width: 800px) {
+  .article-container{
+    width: 98% !important;
+  }
+}
 
 :host{
   width: 100%;

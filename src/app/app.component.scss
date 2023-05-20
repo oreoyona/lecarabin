@@ -1,4 +1,15 @@
 @import '../colors.scss';
+@media screen and (max-width: 800px){
+  .app-container-body{
+    background-color: white !important;
+  }
+
+
+  app-header{
+    box-shadow: none !important;
+    border-top: 1px solid $primary-cyan !important;
+  }
+}
 .app-container{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -14,7 +25,12 @@
     .app-container-body{
         grid-column: 1/-1;
         grid-row: 2/2;
-        background-color: $white-one;
+        background-color: $grayOne;
+        margin-bottom: 20px;
     }
 }
 
+app-header{
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.123);
+
+}

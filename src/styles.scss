@@ -3,9 +3,13 @@
   app-main{
     height: 100%;
   }
+  body, .app-container-body{background-color: white;}
+  app-header{box-shadow: none;}
+
+
 }
 html, body{padding: 0;margin: 0; height: 100%;}
-html, body { height: 100%; }
+html, body { height: 100%; background-color: $grayOne;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 app-header-menu, app-header-search{
@@ -34,4 +38,7 @@ app-header-search{
 }
 .padX15{
   padding: 0 15px;
+}
+hr{
+  border: 1px solid $grayOne;
 }

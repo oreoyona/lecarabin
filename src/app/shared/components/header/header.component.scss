@@ -1,9 +1,14 @@
 @import '../../../../colors.scss';
-
+@media screen and (max-width: 800px) {
+  nav{
+    height: 9vh;
+    min-height: 8vh !important;
+  }
+}
 nav{
     width: 100%;
     min-height: 10vh;
-    background-color: $white-one;
+    background-color: white;
     display: grid;
     grid-template-columns: 20% 40% 20%;
     justify-items: center;
@@ -12,7 +17,6 @@ nav{
     overflow: hidden;
 
     .logo{
-
       display: flex;
       align-items: center;
       justify-content: center;
