@@ -6,8 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./article.component.scss']
 })
 export class ArticleComponent implements OnInit{
-  @Input() offset!: number;@Input() limit!:number; @Input() containerHeight!:number;
-  @Input() heightVh!:number;
+  @Input() offset!: number;@Input() limit!:number; @Input() containerHeight!:number; @Input() heightVh!:number;
   screenHeight!:number;
   imageUrl = "assets/R.jpeg"
 
@@ -17,8 +16,7 @@ export class ArticleComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.screenHeight = document.documentElement.clientHeight;
-    console.log(this.screenHeight)
+
   }
 
 }
