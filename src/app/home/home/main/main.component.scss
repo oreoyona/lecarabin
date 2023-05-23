@@ -1,5 +1,7 @@
-@media screen and (min-width: 800px) {
-
+@media screen and (min-width: 801px) {
+  .grid-container-mobile{
+    display: none;
+  }
   .second-row-article {
     height: max-content;
     width: 100%;
@@ -31,4 +33,14 @@
   }
 
 
+}
+
+@media screen and (max-width: 800px){
+  .grid-container{
+    display: none;
+  }
+
+  .grid-container-mobile{
+    margin: 10px 0;
+  }
 }
