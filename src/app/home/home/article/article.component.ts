@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ArticleComponent implements OnInit{
   @Input() offset!: number;@Input() limit!:number; @Input() containerHeight!:number; @Input() heightVh!:number;
   screenHeight!:number;
+  @Input() headerSize!:number;@Input() headerSizeRem!:number;
   imageUrl = "assets/R.jpeg"
 
 
