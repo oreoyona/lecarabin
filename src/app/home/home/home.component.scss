@@ -10,7 +10,7 @@
 }
 
 @media  screen and (min-width: 801px) {
-  section{
+  .first-section-container{
     display: grid;
     grid-template-columns: 25% 50% 25%;
     justify-items: center;
@@ -18,6 +18,18 @@
     height: 100%;
   }
 
+  .second-section-container{
+    width: 98vw;
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    justify-items: center;
+    background-color: brown;
+    .article-section{
+      height: 500px;
+      width: 100%;
+    }
+  }
   app-left-side, app-right-side{
     width: 80%;
     margin: 0;
