@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
 export class MainComponent {
   offset = 1;
   limit = 2;
-  imageUrl = "./assets/R.jpeg"
+  imageUrl = "./assets/R.jpeg";
+
+  grid_4_article = [];
 }
