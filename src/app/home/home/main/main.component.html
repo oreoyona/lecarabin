@@ -3,27 +3,30 @@
 
     <div class="grid-container" >
        <article [ngStyle]="{'background': 'url('+ imageUrl +') no-repeat', 'background-size': 'cover'}">
-        <div class="title">Titre</div>
+        <div class="article-tag">Some Tag</div>
+        <div class="title pad12"><h3>Titre</h3></div>
+       </article>
+
+       <article [ngStyle]="{'background': 'url('+ imageUrl +') no-repeat', 'background-size': 'cover'}">
+        <div class="title"><h3>Titre</h3></div>
         <div class="article-tag"></div>
        </article>
 
        <article [ngStyle]="{'background': 'url('+ imageUrl +') no-repeat', 'background-size': 'cover'}">
-        <div class="title">Titre</div>
+        <div class="title"><h3>Titre</h3></div>
         <div class="article-tag"></div>
        </article>
 
        <article [ngStyle]="{'background': 'url('+ imageUrl +') no-repeat', 'background-size': 'cover'}">
-        <div class="title">Titre</div>
-        <div class="article-tag"></div>
-       </article>
-
-       <article [ngStyle]="{'background': 'url('+ imageUrl +') no-repeat', 'background-size': 'cover'}">
-        <div class="title">Titre</div>
+        <div class="title"><h3>Titre</h3></div>
         <div class="article-tag"></div>
        </article>
     </div>
-
     <section class="grid-container-mobile">
+      <app-imageless-article />
+    </section>
+
+    <section class="more-article">
       <app-imageless-article />
     </section>
  </section>
