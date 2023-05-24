@@ -23,15 +23,34 @@
     grid-column: 1/-1;
     display: grid;
     grid-template-columns: 65% 35%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
     justify-items: center;
     background-color: brown;
     .article-section{
       height: 500px;
-      width: 100%;
+      width: 94%;
+
+    }
+    .left-side-article{
+      height: 100%;
+      width: 94%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      > *{
+        width: 100%;
+      }
     }
   }
   app-left-side, app-right-side{
     width: 80%;
     margin: 0;
   }
+}
+.second-featured-section{
+  background-color: white;
+  height: 100%;
+  width: 100%;
 }
