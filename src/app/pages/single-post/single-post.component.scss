@@ -1,0 +1,29 @@
+@import '../../../colors.scss';
+.single-post-container{
+  display: grid;
+  grid-template-columns: 5% 60% 25% auto;
+  height: 100%;
+  .social-btns{
+    display: flex;
+    flex-direction: column;
+  }
+  gap: 15px;
+  .single-post-article{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-top: 5px solid $primary-cyan;
+  }
+  .single-post-image{
+    height: 500px;
+
+    img{
+      height: 100%;
+      width: 100%;
+    }
+
+    figure{
+      margin: 15px;
+    }
+  }
+}

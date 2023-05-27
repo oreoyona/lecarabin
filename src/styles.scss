@@ -1,3 +1,4 @@
+@import '~quill/dist/quill.bubble.css';
 @import './colors.scss';
 @media screen and (max-width: 800px){
   app-main{
@@ -39,6 +40,9 @@ app-header-search{
 }
 .padX15{
   padding: 0 15px;
+}
+.padX30{
+  padding: 0 30px;
 }
 .pad12{
   padding: 12px;
