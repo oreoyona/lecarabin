@@ -15,10 +15,15 @@ nav{
     justify-content: center;
     align-items: center;
     overflow: hidden;
-
     .logo{
       display: flex;
       align-items: center;
       justify-content: center;
+      >*{
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+      }
     }
 }
