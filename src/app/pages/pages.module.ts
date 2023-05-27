@@ -5,6 +5,7 @@ import { SinglePageComponent } from './single-page/single-page.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CommonModule,
     PagesRoutingModule,
     MatFormFieldModule,
+    MatIconModule
 
   ]
 })

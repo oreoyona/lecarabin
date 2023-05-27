@@ -27,3 +27,20 @@
     }
   }
 }
+
+.left-side-first-container{
+  height: 100vh;
+  background-color: transparent;
+}
+.left-side-first-section{
+  display: flex;
+  height: 70px;
+  width: 100%;
+  background-color: white;
+  border-top: 5px solid $primary-cyan;
+}
+
+
+.btn{
+  margin: 5px 0;
+}
