@@ -1,6 +1,7 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterContentChecked, AfterContentInit} from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterContentChecked, AfterContentInit, Input, ViewContainerRef} from '@angular/core';
 import { MatIcon, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ArticleService } from 'src/app/shared/article-services.service';
 
 
 
@@ -21,6 +22,7 @@ const facebook = `
 </svg>
 
 `;
+
 
 const twitter = `<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
@@ -65,34 +67,26 @@ const whatsapp = `<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.
   templateUrl: './single-post.component.html',
   styleUrls: ['./single-post.component.scss']
 })
-export class SinglePostComponent implements OnInit, AfterContentInit{
-  @ViewChild('socialBtns') socialBtns!: ElementRef;
-  @ViewChild('btn1') btn1!:MatIcon;
-  private viewportHeight = 0;
+export class SinglePostComponent implements OnInit{
   date!: string;
+  article!:string;
 
   ngOnInit(): void {
     const laDate = new Date();
     const maintenant = laDate.toUTCString()
     this.date = `${laDate.toLocaleDateString()}`
 
-  }
-
-  @HostListener('document:scroll', ['$event'])
-  onScroll(event: any){
+    this.article = this.articleService.article
 
   }
 
-  constructor(iconRegistery: MatIconRegistry, sanitizer: DomSanitizer, private window: Document) {
+  constructor(private articleService: ArticleService, private viewContainerRef: ViewContainerRef, iconRegistery: MatIconRegistry, sanitizer: DomSanitizer, private window: Document) {
     iconRegistery.addSvgIconLiteral('facebook', sanitizer.bypassSecurityTrustHtml(facebook))
     iconRegistery.addSvgIconLiteral('twitter', sanitizer.bypassSecurityTrustHtml(twitter))
     iconRegistery.addSvgIconLiteral('linkedIn', sanitizer.bypassSecurityTrustHtml(linkedIn))
     iconRegistery.addSvgIconLiteral('whatsapp', sanitizer.bypassSecurityTrustHtml(whatsapp))
 
 
-  }
-
-  ngAfterContentInit(): void {
 
   }
 

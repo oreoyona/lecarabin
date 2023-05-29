@@ -15,8 +15,6 @@
     border-top: 5px solid $primary-cyan;
   }
   .single-post-image{
-    height: 500px;
-
     img{
       height: 100%;
       width: 100%;
@@ -52,4 +50,6 @@
 
 }
 
-
+.article-body{
+  text-align: justify;
+}
