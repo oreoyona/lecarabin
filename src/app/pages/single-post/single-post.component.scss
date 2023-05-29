@@ -40,7 +40,16 @@
   border-top: 5px solid $primary-cyan;
 }
 
+.social-btns{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  mat-icon{
+    margin: 10px;
+  }
+  :nth-child(1){position: absolute; bottom: 0px;}
 
-.btn{
-  margin: 5px 0;
 }
+
+

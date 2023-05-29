@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SinglePostComponent } from './single-post/single-post.component';
+import { SinglePostComponent} from './single-post/single-post.component';
 import { SinglePageComponent } from './single-page/single-page.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { PagesRoutingModule } from './pages-routing.module';
@@ -11,13 +11,13 @@ import { MatIconModule } from '@angular/material/icon';
   declarations: [
     SinglePostComponent,
     SinglePageComponent,
-    EditArticleComponent
+    EditArticleComponent,
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
 
   ]
 })
