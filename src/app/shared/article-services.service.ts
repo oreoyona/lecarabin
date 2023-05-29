@@ -26,6 +26,7 @@ export class ArticleService {
   D’après l’article 2 de l’ordonnace de 1968, créant l’ordre des médecins en RDC, l’Ordre veille au maintien des principes de moralité, de probité et de dévouement indispensables à l’exercice de la médecine, ainsi qu’à l’observation par tous ses membres, des devoirs professionnels et des règles de la déontologie médicale. Il est chargé de défendre l’honneur et l’indépendance de la profession médicale.
   <hr>
   <h2>Pourquoi adopter un examen de licence médicale en RDC</h2>
+  <section class="single-post-image"><figure><img src="/assets/R.jpeg"></figure></section>
   <hr>
   Vous l’aurez remarqué, il n’est fait nulle part mention d’un quelconque examen de licence médicale pour devenir médecin agréé dans notre pays.
 

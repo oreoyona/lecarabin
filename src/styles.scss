@@ -58,3 +58,13 @@ hr{
     color: $primary-cyan;
   }
 }
+.single-post-image{
+  img{
+    height: 100%;
+    width: 100%;
+  }
+
+  figure{
+    margin: 0;
+  }
+}

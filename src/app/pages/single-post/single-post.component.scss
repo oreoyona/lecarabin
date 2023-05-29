@@ -53,3 +53,13 @@
 .article-body{
   text-align: justify;
 }
+
+img{
+  :host{
+    height: 1920px;
+    width: 1080px;
+  }
+  height: 100%;
+  width: 100%;
+
+}
