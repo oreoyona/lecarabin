@@ -15,7 +15,6 @@ import { MenuComponent } from './shared/components/header/menu/menu.component';
 import { SearchComponent } from './shared/components/header/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { QuillModule } from 'ngx-quill';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +34,6 @@ import { QuillModule } from 'ngx-quill';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    QuillModule.forRoot()
   ],
   providers: [Document],
   bootstrap: [AppComponent]

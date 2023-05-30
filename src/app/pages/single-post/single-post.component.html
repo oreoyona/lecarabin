@@ -23,6 +23,14 @@
         <figcaption>(c) GC, 2012</figcaption>
       </figure>
     </section>
+    <div class="icons-mobile">
+      <section [ngClass]="{'social-btns': isAtBottom, 'isFixed': isFixed}">
+        <mat-icon alt="facebook" svgIcon="facebook" class="btn"></mat-icon>
+        <mat-icon alt="twitter logo" svgIcon="twitter" class="btn" #btn2></mat-icon>
+        <mat-icon alt="linkedIn" svgIcon="linkedIn" class="btn"></mat-icon>
+        <mat-icon alt="whatsapp" svgIcon="whatsapp" class="btn"></mat-icon>
+      </section>
+    </div>
     <section [innerHTML]="article" class="mat-typography mat-body article-body pad15"></section>
   </section>
   <section class="single-post-left-side">
