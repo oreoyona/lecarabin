@@ -46,14 +46,33 @@
   mat-icon{
     margin: 10px;
   }
-  :nth-child(1){position: absolute; bottom: 0px;}
+  :nth-child(1){position: absolute; bottom: 20px;}
+  :nth-child(2){display: none;}
+  :nth-child(3){display: none;}
+  :nth-child(4){display: none;}
 
 }
 
+.icons{
+  display: flex;flex-direction: column;height: 100%; width: 100%;
+}
+
+.isFixed{
+  display: flex;
+  position: fixed;
+  bottom: 150px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  mat-icon{
+    margin: 10px;
+  }
+
+}
 .article-body{
   text-align: justify;
 }
-
 img{
   :host{
     height: 1920px;
@@ -61,5 +80,4 @@ img{
   }
   height: 100%;
   width: 100%;
-
 }

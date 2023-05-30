@@ -1,10 +1,13 @@
 <article class="single-post-container">
-  <section class="social-btns" #socialBtns>
-    <mat-icon alt="facebook" svgIcon="facebook" class="btn" #btn1></mat-icon>
-    <mat-icon alt="twitter logo" svgIcon="twitter" class="btn" #btn2></mat-icon>
-    <mat-icon alt="linkedIn" svgIcon="linkedIn" class="btn"></mat-icon>
-    <mat-icon alt="whatsapp" svgIcon="whatsapp" class="btn"></mat-icon>
-  </section>
+  <div class="icons">
+    <section [ngClass]="{'social-btns': isAtBottom, 'isFixed': isFixed}">
+      <mat-icon alt="facebook" svgIcon="facebook" class="btn" #btn1></mat-icon>
+      <mat-icon alt="twitter logo" svgIcon="twitter" class="btn" #btn2></mat-icon>
+      <mat-icon alt="linkedIn" svgIcon="linkedIn" class="btn"></mat-icon>
+      <mat-icon alt="whatsapp" svgIcon="whatsapp" class="btn"></mat-icon>
+    </section>
+  </div>
+
   <section class="single-post-article">
     <header>
       <span class="single-post-tag article-tag-title pad15">ARTICLE</span>

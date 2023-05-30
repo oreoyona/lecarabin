@@ -1,4 +1,5 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterContentChecked, AfterContentInit, Input, ViewContainerRef} from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterContentChecked, AfterContentInit, Input, ViewContainerRef, Inject} from '@angular/core';
 import { MatIcon, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ArticleService } from 'src/app/shared/article-services.service';
@@ -71,6 +72,9 @@ export class SinglePostComponent implements OnInit{
   date!: string;
   article!:string;
 
+  isAtBottom = true;
+  isFixed = false;
+
   ngOnInit(): void {
     const laDate = new Date();
     const maintenant = laDate.toUTCString()
@@ -80,7 +84,17 @@ export class SinglePostComponent implements OnInit{
 
   }
 
-  constructor(private articleService: ArticleService, private viewContainerRef: ViewContainerRef, iconRegistery: MatIconRegistry, sanitizer: DomSanitizer, private window: Document) {
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event){
+    if(this.document.documentElement.scrollTop > 100){
+      this.isFixed = true;
+      this.isAtBottom = false;
+    }
+
+    else{this.isFixed = false; this.isAtBottom = true}
+  }
+
+  constructor(@Inject(DOCUMENT) private document: Document,private articleService: ArticleService, private viewContainerRef: ViewContainerRef, iconRegistery: MatIconRegistry, sanitizer: DomSanitizer, private window: Document) {
     iconRegistery.addSvgIconLiteral('facebook', sanitizer.bypassSecurityTrustHtml(facebook))
     iconRegistery.addSvgIconLiteral('twitter', sanitizer.bypassSecurityTrustHtml(twitter))
     iconRegistery.addSvgIconLiteral('linkedIn', sanitizer.bypassSecurityTrustHtml(linkedIn))
