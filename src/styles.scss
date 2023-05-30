@@ -68,3 +68,13 @@ hr{
     margin: 0;
   }
 }
+
+
+mat-icon{
+  svg:hover{
+    fill: $primary-cyan;
+    stroke: $primary-cyan;
+    transition: all .3s ease-in-out;
+
+  }
+}

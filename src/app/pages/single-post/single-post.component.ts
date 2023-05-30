@@ -84,9 +84,10 @@ export class SinglePostComponent implements OnInit{
 
   }
 
+
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event){
-    if(this.document.documentElement.scrollTop > 100){
+    if(this.document.documentElement.scrollTop > 200){
       this.isFixed = true;
       this.isAtBottom = false;
     }
