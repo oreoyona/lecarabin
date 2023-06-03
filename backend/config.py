@@ -8,3 +8,4 @@ class Config(object):
 
 class devConfig(Config):
     DEBUG = True
+    FLASK_ADMIN_SWATCH = 'cerulean'
