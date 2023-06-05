@@ -1,13 +1,13 @@
-<nav>
-  <section class="menu">
-    <span class="material-symbols-outlined">menu</span>
-  </section>
-
-  <section class="logo">
-    <img src="url_for">
-  </section>
-
-  <section class="search">
-
-  </section>
-</nav>
+<header>
+  <nav class="primary-header">
+    <section class="menu">
+      <img src="{{url_for('static', filename='images/menu.svg')}}" alt="menu" class="icon">
+    </section>
+    <section class="logo">
+      <img src="{{url_for('static', filename='assets/lecarabin-logo.svg')}}" alt="logo">
+    </section>
+    <section class="search">
+      <img src="{{url_for('static', filename='images/search.svg')}}" alt="search something on lecarbin" class="icon">
+    </section>
+  </nav>
+</header>
