@@ -31,7 +31,7 @@ class Post(db.Model):
   title = db.Column(db.String(50), nullable=False)
   content = db.Column(db.Text, nullable=False)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-  image_banner = db.relationship('Image', backref='post', uselist=False)
+  image_banner = db.Column(db.String(100))
 
   def __repr__(self):
     return f'<Post {self.title}'
@@ -42,7 +42,6 @@ class Image(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     filename = db.Column(db.String(200), nullable=False)
-    post_id = db.Column(db.Integer, ForeignKey('post.id'), nullable=False)
     description = db.Column(db.String(100), nullable=False)
     image = db.Column(db.LargeBinary(length=(2 * 3) - 1), nullable=False)
 

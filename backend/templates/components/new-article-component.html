@@ -1,10 +1,13 @@
 <section class="new-article-container">
   {{ ckeditor.load(pkg_type="full")}}
   <section class="new-article-main">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
       {{ form.csrf_token }}
       {{ form.title(class="title-form", placeholder="Le titre de votre article")}}
+      <input type="file" name="image_banner" id="image_banner" class="title-form" placeholder="La banniere de l'article">
+
       {{ form.content(class="content-form", placeholder="Qu'avez-vous en tete ?")}}
+      {{ form.submit(class="submit-btn")}}
 
     </form>
 

@@ -10,7 +10,6 @@ class Config(object):
     SQLAlCHEMY_TRACK_MODIFICATIONS = False
     UPLOAD_IMAGE_PATH = UPLOAD_IMAGE_PATH
 
-
 class devConfig(Config):
     DEBUG = True
     FLASK_ADMIN_SWATCH = 'cerulean'
