@@ -26,6 +26,7 @@ class User(db.Model):
 
 class Post(db.Model):
   """Class defining the Post model"""
+
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String(50), nullable=False)
   content = db.Column(db.Text, nullable=False)
@@ -38,6 +39,7 @@ class Post(db.Model):
 
 class Image(db.Model):
     """Defines the Image Model"""
+
     id = db.Column(db.Integer, primary_key=True)
     filename = db.Column(db.String(200), nullable=False)
     post_id = db.Column(db.Integer, ForeignKey('post.id'), nullable=False)

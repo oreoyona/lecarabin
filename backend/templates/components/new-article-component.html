@@ -1,0 +1,15 @@
+<section class="new-article-container">
+  {{ ckeditor.load(pkg_type="full")}}
+  <section class="new-article-main">
+    <form method="POST">
+      {{ form.csrf_token }}
+      {{ form.title(class="title-form", placeholder="Le titre de votre article")}}
+      {{ form.content(class="content-form", placeholder="Qu'avez-vous en tete ?")}}
+
+    </form>
+
+
+    {{ ckeditor.config(name='content') }}
+  </section>
+  <aside class="new-article-right-side"></aside>
+</section>

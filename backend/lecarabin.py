@@ -2,8 +2,9 @@
 import mimetypes
 
 import requests
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 from flask_migrate import Migrate
+from forms import ArticleForm
 from models import db, User, Post, Image
 from flask_ckeditor import CKEditor
 import os
@@ -34,6 +35,12 @@ def go_to_home():
 def go_to_admin():
   return render_template('admin.html', title="Dashboard")
 
+
+@app.route("/new-article", methods=['GET', 'POST'])
+def go_to_new_article():
+  form = ArticleForm(request.form)
+
+  return render_template('pages/new-article.html', form=form)
 
 @app.route("/npost", methods=["GET", "POST"])
 def image_upload():
