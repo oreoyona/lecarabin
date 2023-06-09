@@ -6,7 +6,11 @@
     <hr>
 
     <section class="list-article-body">
-
+      <ul>
+        {% for article in articles %}
+        <li>{{article.title}}</li>
+        {% endfor %}
+      </ul>
     </section>
   </section>
 </section>

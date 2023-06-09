@@ -1,9 +1,7 @@
 """The entry point of lecarabin"""
 import mimetypes
-
-import requests
 from flask_wtf import FlaskForm
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, flash, render_template, redirect, request, url_for
 from flask_migrate import Migrate
 from forms import ArticleForm
 from models import db, User, Post, Image
@@ -36,42 +34,40 @@ def go_to_home():
 
 @app.route("/dashboard")
 def go_to_admin():
-  return render_template('admin.html', title="Dashboard")
+  articles = Post.query.all()
+  return render_template('admin.html', title="Dashboard", articles=articles)
 
 
 @app.route("/new-article", methods=['GET', 'POST'])
 def go_to_new_article():
   form = ArticleForm()
-
   if request.method == "POST":
     if form.validate_on_submit():
       filename = secure_filename(form.image_banner.data.filename)
       post = Post(
         title=form.title.data,
-        content=request.form.get('ckeditor'),
+        content=form.content.data,
         image_banner=UPLOAD_IMAGE_PATH + filename)
       try:
         db.session.add(post)
+        print("post added")
         db.session.commit()
+        form.image_banner.data.save(os.path.join(app.config['UPLOAD_FOLDER'] ,filename))
+        flash("The article was successfully published")
       except Exception as e:
         print(e)
+
+        flash("Something went wrong, please try later")
       finally:
         db.session.close()
-      form.image_banner.data.save(filename)
-      return redirect(url_for('go_to_new_article'))
 
-
+    return redirect(url_for('go_to_new_article'))
   return render_template('pages/new-article.html', form=form)
 
-@app.route("/npost", methods=["GET", "POST"])
-def image_upload():
-  if requests.method == 'POST':
-    file = requests.files['files']
-    if file is None:
-      redirect(requests.url)
+@app.route("/edit-post/<id>", methods=["GET", "POST"])
+def image_upload(id:int):
 
-    if file.filename == '':
-      pass
+  pass
 
 
 if __name__ == "__main__":

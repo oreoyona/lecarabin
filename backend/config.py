@@ -8,7 +8,7 @@ class Config(object):
     basedir = os.path.abspath(os.path.dirname(__file__))
     SQLALCHEMY_DATABASE_URI = 'postgresql://lecarabinuser:0000@localhost/lecarabin'
     SQLAlCHEMY_TRACK_MODIFICATIONS = False
-    UPLOAD_IMAGE_PATH = UPLOAD_IMAGE_PATH
+    UPLOAD_FOLDER = UPLOAD_IMAGE_PATH
 
 class devConfig(Config):
     DEBUG = True
