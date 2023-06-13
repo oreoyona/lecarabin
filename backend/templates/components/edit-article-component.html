@@ -1,0 +1,26 @@
+<section class="new-article-container">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <section class="flashes">
+    {% for message in messages %}
+    <span>{{message}}</span>
+    {% endfor %}
+  </section>
+  {% endif %}
+  {% endwith %}
+  <section class="new-article-main">
+    <form method="POST" enctype="multipart/form-data">
+      {{ form.csrf_token }}
+      <input type="text" class="title-form" id="title" value="{{article.title}}" placeholder="{{article.title}}">
+      <input type="file" name="image_banner" id="image_banner" class="title-form" placeholder="La banniere de l'article">
+
+      {{ckeditor.create(value=article.content)}}
+      {{ form.submit(class="submit-btn")}}
+
+    </form>
+
+
+    {{ ckeditor.config(name='content') }}
+  </section>
+  <aside class="new-article-right-side"></aside>
+</section>

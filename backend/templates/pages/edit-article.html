@@ -1,1 +1,4 @@
-{% extends 'base.html'%}
+{% extends 'pages/new-article.base.html'%}
+{% block title %}{{article.title}}{% endblock title%}
+{% block nav%}{% include 'components/navigation.html' %} {% endblock nav %}
+{% block content %} {% include 'components/edit-article-component.html' %}{% endblock content %}

@@ -112,3 +112,11 @@
 .submit-btn:hover, .submit-btn:focus{
   transform: scale(0.9);
 }
+
+
+.flashes{
+  border-radius: 15px;
+  background-color: #03578f;
+  color:#2980b9;
+
+}
