@@ -153,3 +153,6 @@ ul{
 a:hover{
   color: orangered;
 }
+#cat_form{
+  display: none;
+}

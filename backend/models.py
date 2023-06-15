@@ -76,3 +76,42 @@ class Image(db.Model):
     def __repr__(self):
 
       return f'<Image {self.filename}> for <Article {self.post_id}'
+
+
+class Category(db.Model):
+  
+    """Defines the Categiory class"""
+  
+    id = db.Column(db.Integer, primary_key=True)
+  
+    name = db.Column(db.String(100), nullable=False, default='Actualites')
+  
+    label = db.Column(db.String(100), nullable=False, default=name)
+  
+    def __repr__(self):
+    
+        return f"<Category:  {self.name} for Category {self.id}>"
+  
+    def update(self):
+      
+        """ Method to update the Model and saves the result of the operation in a log file"""
+        
+        with open('./lc_contents/categories_logs/', 'a') as log_file:
+          
+            log_file.write(f"The Category {self.name} was call for modifications")
+            
+            try:
+                
+                db.session.commit()
+                
+                log_file.write(f"Operation succeded at {datetime.datetime.utcnow()}")
+                
+                log_file.write(f"{self.name} was modified")
+            
+            except Exception as e:
+                
+                log_file.write(f"Operation failed at {datetime.datetime.utcnow()}")
+                
+                log_file.write(f"The error raised was:")
+                
+                log_file.write(e)

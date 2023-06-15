@@ -4,6 +4,7 @@ from flask_ckeditor import CKEditorField
 from wtforms.validators import DataRequired
 
 
+
 class ImageForm(FlaskForm):
 
     """Defines the Image Form"""
@@ -30,10 +31,17 @@ class AsideArticleForm(FlaskForm):
 
     """Defines the second form to be defined aside from the main article form"""
 
-    author = SelectField(u'author', choices=[('Gloire Chabu', 'Chabu, MD'), ('Editor', 'lecarabin')], validators=[DataRequired()])
+    author = SelectField(u'author', validators=[DataRequired()])
 
-    category = SelectField(u'category', choices=[('actualites', 'Actualites')], validators=[DataRequired()])
+    category = SelectField(u'category', validators=[DataRequired()])
 
     tag = StringField('tag', validators=[DataRequired()])
+    
 
-
+class CategoryForm(FlaskForm):
+    
+    """ Defines the Category form """
+    
+    name = StringField("name", validators=[DataRequired()])
+    
+    submit = SubmitField("Enregistrer")

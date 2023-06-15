@@ -4,8 +4,10 @@
 import mimetypes
 from flask import Flask, flash, render_template, redirect, request, url_for
 from flask_migrate import Migrate
-from forms import ArticleForm, AsideArticleForm
-from models import db, Post
+from sqlalchemy import select
+
+from forms import ArticleForm, AsideArticleForm, CategoryForm
+from models import db, Post, Category
 from flask_ckeditor import CKEditor
 import os
 from werkzeug.utils import secure_filename
@@ -104,6 +106,17 @@ def go_to_edit(post_id):
     form = ArticleForm()
 
     aside_form = AsideArticleForm()
+    
+    cat_form = CategoryForm()
+    
+    catergories = db.session.execute(select(Category).order_by(Category.name)).scalars()
+    
+    cat_choices = []
+    
+    for el in catergories:
+        cat_choices.append((el, el))
+        
+    aside_form.category.choices = cat_choices
 
     if article:
 
@@ -152,7 +165,7 @@ def go_to_edit(post_id):
 
             return redirect(url_for('go_to_edit', post_id=1))
 
-    return render_template('pages/edit-article.html', article=article, form=form, aside_form=aside_form)
+    return render_template('pages/edit-article.html', article=article, form=form, aside_form=aside_form, cat_form=cat_form)
 
 
 if __name__ == "__main__":
