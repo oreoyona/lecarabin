@@ -48,7 +48,18 @@ body {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: max-content;
 }
+.flashes{
+  position: absolute;
+  top: 12vh;
+  width: max-content;
+  padding: 25px;
+  background-color: rgba(60, 179, 113, 0.55);
+  color: mediumseagreen;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 
+}
 .primary-header {
   grid-column: 1/-1;
   height: 10vh;

@@ -1,26 +1,60 @@
 <section class="new-article-container">
+
   {% with messages = get_flashed_messages() %}
+
   {% if messages %}
+
   <section class="flashes">
+
     {% for message in messages %}
-    <span>{{message}}</span>
+
+    <span>{{ message }}</span>
+
     {% endfor %}
+
   </section>
+
   {% endif %}
+
   {% endwith %}
-  <section class="new-article-main">
+
+  <section class="new-article-main m15">
+
     <form method="POST" enctype="multipart/form-data">
       {{ form.csrf_token }}
-      <input type="text" class="title-form" id="title" value="{{article.title}}" placeholder="{{article.title}}">
-      <input type="file" name="image_banner" id="image_banner" class="title-form" placeholder="La banniere de l'article">
+
+      {{ form.title(class="title-form", placeholder="Le titre de votre article")}}
+
+      {{ form.image_banner(type="file", class="title-form") }}
 
       {{ckeditor.create(value=article.content)}}
+
       {{ form.submit(class="submit-btn")}}
 
     </form>
 
 
     {{ ckeditor.config(name='content') }}
+
   </section>
-  <aside class="new-article-right-side"></aside>
+
+  <aside class="new-article-right-side m15">
+
+    <form method="post" class="m15 pad15">
+      {{ aside_form.csrf_token }}
+
+      {{ aside_form.author.label|capitalize() }}
+
+      {{ aside_form.author(class='form-select') }}
+
+      <hr>
+
+      {{ aside_form.category.label }}
+
+      {{ aside_form.category(class='form-select') }}
+    </form>
+
+  </aside>
+
+
 </section>
