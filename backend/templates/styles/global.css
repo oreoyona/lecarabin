@@ -6,7 +6,25 @@
     height: 24px;
     width: 24px;
   }
+  aside{
+    display: flex;
+    flex-direction: column;
+  }
+  .primary-header{
+    box-shadow: 1px 1px 5px #ccc;
+  }
 
+  .new-article-right-side{
+    width: 100%;
+    margin: 0;
+
+  }
+  #delete-article-btn{
+  display: inline-flex;
+  max-width: min-content;
+  justify-self: center;
+  align-self: center;
+}
 }
 
 @media screen and (min-width: 801px){
@@ -155,4 +173,59 @@ a:hover{
 }
 #cat_form{
   display: none;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 25px;
+}
+
+#cat_form_submit_btn, #cat_form_cancel_button{
+  margin: 10px;
+  display: inline-flex;
+}
+.tag-section{
+  margin: 7px 0;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+
+
+}
+.first_tag{
+  background-color: rgba(0, 0, 139, 0.34) !important;
+  color: darkblue;
+}
+.second_tag{
+  background-color: rgba(0, 100, 0, 0.47) !important;
+  color: darkgreen;
+}
+
+.third_tag{
+  background-color: rgba(255, 69, 0, 0.53) !important;
+  color: orangered;
+}
+.tag{
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  margin: 5px;
+  border: 1px solid inherit;
+  border-radius: 15px;
+  background-color: gray;
+  user-select: none;
+  cursor: pointer;
+}
+input::file-selector-button {
+  color: #1fadb6;
+  padding: 0.3em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+   box-shadow: 1px 1px 5px #ccc;
+  cursor: pointer;
+}
+#delete-article-btn{
+  display: inline-flex;
+  max-width: min-content;
+  justify-self: center;
+  align-self: center;
 }

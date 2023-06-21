@@ -7,6 +7,7 @@ from flask_migrate import Migrate
 from sqlalchemy import select
 
 from forms import ArticleForm, AsideArticleForm, CategoryForm
+from lc_core import save_to_db, write_log, save_new_data
 from models import db, Post, Category
 from flask_ckeditor import CKEditor
 import os
@@ -60,6 +61,10 @@ def go_to_new_article():
     """Defines the new article route"""
 
     form = ArticleForm()
+    
+    aside_form = AsideArticleForm()
+    
+    cat_form = CategoryForm()
 
     if request.method == "POST":
 
@@ -75,10 +80,8 @@ def go_to_new_article():
 
               image_banner=UPLOAD_IMAGE_PATH + filename)
             try:
-
-                db.session.add(post)
-
-                db.session.commit()
+                
+                save_to_db(db, post)
 
                 form.image_banner.data.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
@@ -86,14 +89,16 @@ def go_to_new_article():
             except Exception as e:
 
                 flash("Something went wrong, please try later")
-
+                
+                write_log(e)
+                
             finally:
 
                 db.session.close()
 
         return redirect(url_for('go_to_new_article'))
 
-    return render_template('pages/new-article.html', form=form)
+    return render_template('pages/new-article.html', form=form, cat_form=cat_form, aside_form=aside_form)
 
 
 @app.route("/edit-post/<post_id>", methods=["GET", "POST"])
@@ -112,6 +117,9 @@ def go_to_edit(post_id):
     catergories = db.session.execute(select(Category).order_by(Category.name)).scalars()
     
     cat_choices = []
+    
+    tags = db.session.execute(select(Post.tag)).scalars()
+    
     
     for el in catergories:
         cat_choices.append((el, el))
@@ -155,17 +163,36 @@ def go_to_edit(post_id):
                 flash("The article was updated")
 
         except Exception as e:
-        #//TODO: send every error in a log file
 
             flash("Something wrong happened, try later")
+        
+            write_log(e)
 
         finally:
 
             db.session.close()
 
-            return redirect(url_for('go_to_edit', post_id=1))
+            return redirect(url_for('go_to_edit', post_id=post_id))
 
-    return render_template('pages/edit-article.html', article=article, form=form, aside_form=aside_form, cat_form=cat_form)
+    return render_template('pages/edit-article.html',
+                           article=article,
+                           form=form,
+                           aside_form=aside_form,
+                           cat_form=cat_form,
+                           post_id=post_id,
+                           tags=tags)
+
+
+@app.route("/new-category/<post_id>", methods=["POST"])
+def save_new_category(post_id):
+    
+    """Defines new-category route to save new articles """
+    
+    category = Category(name=request.form.get('name'))
+
+    save_new_data(category, db)
+
+    return redirect(url_for('go_to_edit', post_id=post_id))
 
 
 if __name__ == "__main__":

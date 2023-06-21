@@ -2,63 +2,67 @@ import datetime
 import bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
+from sqlalchemy.dialects.postgresql import ARRAY
+
 db = SQLAlchemy()
 
 
 class User(db.Model):
 
-  id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
 
-  name = db.Column(db.String(255))
+    name = db.Column(db.String(255))
 
-  email = db.Column(db.String(255))
+    email = db.Column(db.String(255))
 
-  password = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(100), nullable=False)
 
 
-  def __repr__(self):
+    def __repr__(self):
 
-    return f'<User {self.username}>'
+      return f'<User {self.username}>'
 
-  def set_password(self, password):
+    def set_password(self, password):
 
-    """Password checker"""
+      """Password checker"""
 
-    self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+      self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
-  def check_password(self, password):
+    def check_password(self, password):
 
-    """Check password"""
+      """Check password"""
 
-    return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
+      return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
 
 
 class Post(db.Model):
 
-  """Class defining the Post model"""
+    """Class defining the Post model"""
 
-  id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
 
-  title = db.Column(db.String(50), nullable=False)
+    title = db.Column(db.String(50), nullable=False)
 
-  content = db.Column(db.Text, nullable=False)
+    content = db.Column(db.Text, nullable=False)
 
-  created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
-  image_banner = db.Column(db.String(100))
+    image_banner = db.Column(db.String(100))
 
-  category = db.Column(db.String(100))
+    category = db.Column(db.String(100))
+  
+    tag = db.Column(ARRAY(db.String(100)))
+    
+    author = db.Column(db.String(100), default="lecarabin")
+    def __repr__(self):
+      
+      return f'<Post {self.title}'
 
-
-  def __repr__(self):
-
-    return f'<Post {self.title}'
-
-  def update(self):
-
-    """Updates the model after a change"""
-
-    db.session.commit()
+    def update(self):
+        
+        """Updates the model after a change"""
+        
+        db.session.commit()
 
 
 class Image(db.Model):
@@ -84,13 +88,13 @@ class Category(db.Model):
   
     id = db.Column(db.Integer, primary_key=True)
   
-    name = db.Column(db.String(100), nullable=False, default='Actualites')
+    name = db.Column(db.String(100), nullable=False)
   
-    label = db.Column(db.String(100), nullable=False, default=name)
+    label = db.Column(db.String(100))
   
     def __repr__(self):
     
-        return f"<Category:  {self.name} for Category {self.id}>"
+        return f"{self.name}"
   
     def update(self):
       

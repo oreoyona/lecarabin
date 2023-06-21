@@ -21,6 +21,7 @@
   <section class="new-article-main m15">
 
     <form method="POST" enctype="multipart/form-data">
+
       {{ form.csrf_token }}
 
       {{ form.title(class="title-form", placeholder="Le titre de votre article")}}
@@ -37,50 +38,6 @@
     {{ ckeditor.config(name='content') }}
 
   </section>
-
-  <aside class="new-article-right-side m15">
-
-    <form method="post" class="m15 pad15" id="aside_form">
-      {{ aside_form.csrf_token }}
-
-      {{ aside_form.author.label|capitalize() }}
-
-      {{ aside_form.author(class='form-select') }}
-
-      <hr>
-      {{ aside_form.category.label }}
-
-      {{ aside_form.category(class='form-select') }}
-
-        <button type="button" class="btn btn-link" id="addCat">Ajouter une categorie</button>
-        <hr>
-        <hr>
-      {{ aside_form.tag.label }}
-
-      {{ aside_form.tag(class='form-control') }}
-
-        <button type="button" class="btn btn-link">Ajouter une tag</button>
-        <hr>
-
-    </form>
-
-    <form method="post" id="cat_form" class="m15 pad15">
-        {{ cat_form.csrf_token() }}
-
-        {{ cat_form.name(class="form-control") }}
-
-        {{ cat_form.submit(class="btn") }}
-    </form>
-  </aside>
-
-<script>
-    const addCatBtn = document.getElementById('addCat')
-    const new_cat_form = document.getElementById('cat_form');
-    const sideForm = document.getElementById('aside_form')
-
-    addCatBtn.addEventListener('click', ()=>{
-        new_cat_form.style.display = 'flex';
-        sideForm.style.display = 'none';
-    })
-</script>
+{% extends 'components/aside.html' %}
+<script src="{{ url_for('static', filename='scripts/article.js') }}"></script>
 </section>
