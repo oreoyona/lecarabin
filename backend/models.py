@@ -56,7 +56,7 @@ class Post(db.Model):
     author = db.Column(db.String(100), default="lecarabin")
     def __repr__(self):
       
-      return f'<Post {self.title}'
+      return f'Post {self.title}'
 
     def update(self):
         

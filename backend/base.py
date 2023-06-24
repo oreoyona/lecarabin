@@ -1,0 +1,1 @@
+from flask import Flaskfrom flask_ckeditor import CKEditorfrom models import dbapp = Flask(__name__, static_url_path='', static_folder='templates/', template_folder='templates')app.config.from_object('config.DevConfig')app.config['DEBUG'] = Truedb.init_app(app)ckeditor = CKEditor(app)
