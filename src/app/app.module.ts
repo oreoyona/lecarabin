@@ -15,6 +15,7 @@ import { MenuComponent } from './shared/components/header/menu/menu.component';
 import { SearchComponent } from './shared/components/header/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +35,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule
   ],
-  providers: [Document],
+  providers: [Document, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
