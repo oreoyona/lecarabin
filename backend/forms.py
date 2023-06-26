@@ -4,7 +4,6 @@ from flask_ckeditor import CKEditorField
 from wtforms.validators import DataRequired
 
 
-
 class ImageForm(FlaskForm):
 
     """Defines the Image Form"""
@@ -36,12 +35,12 @@ class AsideArticleForm(FlaskForm):
     category = SelectField(u'category', validators=[DataRequired()])
 
     tag = StringField('tag', validators=[DataRequired()])
-    
+
 
 class CategoryForm(FlaskForm):
-    
+
     """ Defines the Category form """
-    
+
     name = StringField("name", validators=[DataRequired()])
-    
+
     submit = SubmitField("Enregistrer")

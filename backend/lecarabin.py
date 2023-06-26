@@ -24,8 +24,7 @@ mimetypes.add_type('text/css', '.css')
 #############################################################################
 
 if __name__ == "__main__":
-    
+
     # TODO: run this config in production
     # app.run(ssl_context=('cert.pem', 'key.pem'))
     app.run()
-    
