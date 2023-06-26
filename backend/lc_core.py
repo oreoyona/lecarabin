@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_sqlalchemy.model import Model
 from sqlalchemy import select
 
-from models import Post
+from models import Post, User
 
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'webp'}
 
@@ -85,3 +85,8 @@ def find_datum(dbs: SQLAlchemy, model: Type[Model | Post], model_id: int):
     """ finds an article from the database using the id of the article"""
 
     return dbs.get_or_404(model, model_id)
+
+def find_user(dbs: SQLAlchemy, identifier: str):
+    """ finds a user by email from the databse """
+
+    return dbs.session.execute(select(User).where(User.email == identifier))

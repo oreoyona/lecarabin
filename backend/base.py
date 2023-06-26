@@ -1,13 +1,27 @@
 from flask import Flask, request, redirect
 from flask_ckeditor import CKEditor
 from flask_cors import CORS
-from models import db
+from flask_login import LoginManager
+from models import User, db
 
 
 app = Flask(__name__, static_url_path='',
             static_folder='templates/', template_folder='templates')
 
 app.config.from_object('config.DevConfig')
+
+login_manager = LoginManager()
+
+login_manager.init_app(app)
+
+login_manager.login_view = 'loginUser'
+
+login_manager.session_protection = "strong"
+
+@login_manager.user_loader
+def load_user(user_id):
+
+    return User.query.get(int(user_id))
 
 app.config['DEBUG'] = True
 

@@ -1,13 +1,15 @@
 import os
-from flask import flash, render_template, redirect, request, url_for
+from flask import Blueprint, flash, render_template, redirect, request, url_for
+from flask_login import login_user
 from sqlalchemy import select
 from base import app, db
-from forms import ArticleForm, AsideArticleForm, CategoryForm
-from lc_core import save_to_db, write_log, save_new_data, get_formated_data_from_db
+from forms import ArticleForm, AsideArticleForm, CategoryForm, LoginUserForm
+from lc_core import find_user, save_to_db, write_log, save_new_data, get_formated_data_from_db
 
 from config import UPLOAD_IMAGE_PATH
 from werkzeug.utils import secure_filename
 from models import *
+
 
 
 @app.route("/")
@@ -17,14 +19,14 @@ def go_to_home():
     return render_template('index.html')
 
 
-@app.route("/dashboard")
+@app.route("/admin/dashboard")
 def go_to_admin():
     articles = Post.query.all()
 
     return render_template('admin.html', title="Dashboard", articles=articles)
 
 
-@app.route("/new-article", methods=['GET', 'POST'])
+@app.route("/admin/new-article", methods=['GET', 'POST'])
 def go_to_new_article():
     """Defines the new article route"""
 
@@ -72,7 +74,7 @@ def go_to_new_article():
     return render_template('pages/new-article.html', form=form, cat_form=cat_form, aside_form=aside_form)
 
 
-@app.route("/edit-post/<post_id>", methods=["GET", "POST"])
+@app.route("/admin/edit-post/<post_id>", methods=["GET", "POST"])
 def go_to_edit(post_id):
     """Defines the edit-post route"""
 
@@ -154,7 +156,7 @@ def go_to_edit(post_id):
                            tags=tags)
 
 
-@app.route("/new-category/<post_id>", methods=["POST"])
+@app.route("/admin/new-category/<post_id>", methods=["POST"])
 def save_new_category(post_id):
     """Defines new-category route to save new articles """
 
@@ -163,3 +165,39 @@ def save_new_category(post_id):
     save_new_data(category, db)
 
     return redirect(url_for('go_to_edit', post_id=post_id))
+
+
+@app.route('/admin/login', methods=['GET', 'POST'])
+def loginUser():
+
+    """ Log in the user"""
+
+    form = LoginUserForm()
+
+    if request.method == 'POST':
+
+        if form.validate_on_submit():
+
+            user = find_user(dbs=db, identifier=form.email.data)
+
+            password = form.password.data
+
+            if user:
+
+                if check_password_hash(user.password_hash, password):
+
+                    login_user(user)
+
+                    flash("Logged in !")
+
+                    return redirect(url_for('logAdmin'))
+
+                else:
+
+                    flash("Nom d'utilisateur ou mot de passe erronee")
+
+            else:
+
+                flash("Nom d'utilisateur inconnu. Veuillez vous enregistrer")
+
+    return render_template('pages/auth.login.html', form=form)

@@ -44,3 +44,14 @@ class CategoryForm(FlaskForm):
     name = StringField("name", validators=[DataRequired()])
 
     submit = SubmitField("Enregistrer")
+
+
+class LoginUserForm(FlaskForm):
+
+    """ Defines the LoginUser form"""
+
+    email = StringField('email', validators=[DataRequired()])
+
+    password = StringField('password', validators=[DataRequired()])
+
+    submit = SubmitField('Connexion')

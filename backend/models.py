@@ -1,13 +1,14 @@
 import datetime
-import bcrypt
+from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
 from sqlalchemy.dialects.postgresql import ARRAY
+from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
 
@@ -17,22 +18,24 @@ class User(db.Model):
 
     password = db.Column(db.String(100), nullable=False)
 
+    @property
+    def password(self):
+        """ Returns an error whenever the psw id demanded"""
 
-    def __repr__(self):
+        raise AttributeError("Password is not a readable entity")
 
-      return f'<User {self.username}>'
 
-    def set_password(self, password):
+    @password.setter
+    def password(self, password):
+        """ Sets the password of the user"""
 
-      """Password checker"""
+        self.password_hash = generate_password_hash(password)
 
-      self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+    def verify_password(self, password):
+        """ Checks wether the user's password is correct"""
 
-    def check_password(self, password):
+        return check_password_hash(pwhash=self.password_hash, password=password)
 
-      """Check password"""
-
-      return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
 
 
 class Post(db.Model):
