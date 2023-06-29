@@ -221,6 +221,7 @@ a:hover{
   border-radius: 15px;
   background-color: gray;
   user-select: none;
+  -webkit-user-select: none;
   cursor: pointer;
 }
 input::file-selector-button {
@@ -257,4 +258,18 @@ input::file-selector-button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
+}
+#inscription-form{
+  display: none;
+}
+#alert-div .fading-away{
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+.info-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center ;
 }

@@ -3,8 +3,8 @@ from flask import Blueprint, flash, render_template, redirect, request, url_for
 from flask_login import login_user
 from sqlalchemy import select
 from base import app, db
-from forms import ArticleForm, AsideArticleForm, CategoryForm, LoginUserForm
-from lc_core import find_user, save_to_db, write_log, save_new_data, get_formated_data_from_db
+from forms import ArticleForm, AsideArticleForm, CategoryForm, InscrptionForm, LoginUserForm
+from lc_core import find_user, get_data_from_db, save_to_db, write_log, save_new_data, get_formated_data_from_db
 
 from config import UPLOAD_IMAGE_PATH
 from werkzeug.utils import secure_filename
@@ -21,7 +21,7 @@ def go_to_home():
 
 @app.route("/admin/dashboard")
 def go_to_admin():
-    articles = Post.query.all()
+    articles = get_data_from_db(dbs=db, model=Post)
 
     return render_template('admin.html', title="Dashboard", articles=articles)
 
@@ -174,6 +174,8 @@ def loginUser():
 
     form = LoginUserForm()
 
+    i_form = InscrptionForm()
+
     if request.method == 'POST':
 
         if form.validate_on_submit():
@@ -200,4 +202,4 @@ def loginUser():
 
                 flash("Nom d'utilisateur inconnu. Veuillez vous enregistrer")
 
-    return render_template('pages/auth.login.html', form=form)
+    return render_template('pages/auth.login.html', form=form, i_form=i_form)

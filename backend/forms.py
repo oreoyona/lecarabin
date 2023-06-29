@@ -55,3 +55,16 @@ class LoginUserForm(FlaskForm):
     password = StringField('password', validators=[DataRequired()])
 
     submit = SubmitField('Connexion')
+
+
+class InscrptionForm(FlaskForm):
+
+    """ Defines the inscriptionUser form"""
+
+    email = StringField("email", validators=[DataRequired()])
+
+    password = StringField('password', validators=[DataRequired()])
+
+    name = StringField('name', validators=[DataRequired()])
+
+    submit = SubmitField('Enregister')
