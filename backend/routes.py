@@ -202,4 +202,7 @@ def loginUser():
 
                 flash("Nom d'utilisateur inconnu. Veuillez vous enregistrer")
 
+    if request.method == "POST" and i_form.validate_on_submit():
+        user = User(name=i_form.name.data, email=i_form.email.data, password=generate_password_hash(i_form.password))
+        save_new_data(dbs=db, model=user)
     return render_template('pages/auth.login.html', form=form, i_form=i_form)
