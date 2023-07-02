@@ -4,6 +4,8 @@ import mimetypes
 
 from flask_migrate import Migrate
 
+from flask_minify import Minify
+
 from base import app, db
 
 import routes
@@ -14,6 +16,7 @@ app.register_blueprint(api_bp)
 
 migrate = Migrate(app=app, db=db)
 
+Minify(app=app, html=True, js=True, cssless=True  )
 #############################################################################
 
 mimetypes.add_type('application/javascript', '.js')

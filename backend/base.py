@@ -1,7 +1,7 @@
-from flask import Flask, request, redirect
+from flask import Flask, request, g
 from flask_ckeditor import CKEditor
 from flask_cors import CORS
-from flask_login import LoginManager
+from flask_login import LoginManager, current_user
 from models import User, db
 
 
@@ -55,3 +55,8 @@ def after_request(response):
 #         url = request.url.replace("http://", "https://")
 #
 #     return redirect(url)
+
+
+@app.before_request
+def before_request():
+    g.current_user = current_user

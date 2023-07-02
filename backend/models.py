@@ -9,6 +9,7 @@ db = SQLAlchemy()
 
 
 class User(db.Model, UserMixin):
+    """Defines the User model"""
 
     id = db.Column(db.Integer, primary_key=True)
 
@@ -16,7 +17,21 @@ class User(db.Model, UserMixin):
 
     email = db.Column(db.String(255))
 
-    password = db.Column(db.String(100), nullable=False)
+    password_hash = db.Column(db.String())
+
+    role = db.Column(db.String(50))
+
+    def _init__(self, id, name, email, password, role='user'):
+
+        self.id = id
+
+        self.name = name
+
+        self.email = email
+
+        self.password_hash = generate_password_hash(password)
+
+        self.role = role
 
     @property
     def password(self):
@@ -36,6 +51,9 @@ class User(db.Model, UserMixin):
 
         return check_password_hash(pwhash=self.password_hash, password=password)
 
+    def __repr__(self):
+
+        return f"<User id={self.id}, name={self.name}, email={self.email}>"
 
 
 class Post(db.Model):
@@ -57,6 +75,7 @@ class Post(db.Model):
     tag = db.Column(ARRAY(db.String(100)))
 
     author = db.Column(db.String(100), default="lecarabin")
+
     def __repr__(self):
 
       return f'Post {self.title}'

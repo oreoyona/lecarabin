@@ -1,15 +1,15 @@
 import os
 from flask import Blueprint, flash, render_template, redirect, request, url_for
-from flask_login import login_user
+from flask_login import login_user, login_required
 from sqlalchemy import select
+from flask_wtf import FlaskForm
 from base import app, db
 from forms import ArticleForm, AsideArticleForm, CategoryForm, InscrptionForm, LoginUserForm
-from lc_core import find_user, get_data_from_db, save_to_db, write_log, save_new_data, get_formated_data_from_db
+from lc_core import check_pwd, find_user, get_data_from_db, save_to_db, write_log, save_new_data, get_formated_data_from_db
 
 from config import UPLOAD_IMAGE_PATH
 from werkzeug.utils import secure_filename
 from models import *
-
 
 
 @app.route("/")
@@ -20,6 +20,7 @@ def go_to_home():
 
 
 @app.route("/admin/dashboard")
+@login_required
 def go_to_admin():
     articles = get_data_from_db(dbs=db, model=Post)
 
@@ -27,6 +28,7 @@ def go_to_admin():
 
 
 @app.route("/admin/new-article", methods=['GET', 'POST'])
+@login_required
 def go_to_new_article():
     """Defines the new article route"""
 
@@ -75,6 +77,7 @@ def go_to_new_article():
 
 
 @app.route("/admin/edit-post/<post_id>", methods=["GET", "POST"])
+@login_required
 def go_to_edit(post_id):
     """Defines the edit-post route"""
 
@@ -157,6 +160,7 @@ def go_to_edit(post_id):
 
 
 @app.route("/admin/new-category/<post_id>", methods=["POST"])
+@login_required
 def save_new_category(post_id):
     """Defines new-category route to save new articles """
 
@@ -169,40 +173,66 @@ def save_new_category(post_id):
 
 @app.route('/admin/login', methods=['GET', 'POST'])
 def loginUser():
-
     """ Log in the user"""
 
     form = LoginUserForm()
 
-    i_form = InscrptionForm()
+    if request.method == 'POST' and form.validate_on_submit():
 
-    if request.method == 'POST':
+      user: User = find_user(dbs=db, identifier=form.email.data)
 
-        if form.validate_on_submit():
+      password = form.password.data
 
-            user = find_user(dbs=db, identifier=form.email.data)
+      if not user == None  and user.verify_password(password):
 
-            password = form.password.data
+        login_user(user=user, remember=True)
 
-            if user:
+        flash("Logged in !")
 
-                if check_password_hash(user.password_hash, password):
+        return redirect(url_for('go_to_admin'))
 
-                    login_user(user)
+      else:
 
-                    flash("Logged in !")
+          flash("Nom d'utilisateur ou mot de passe errones")
 
-                    return redirect(url_for('logAdmin'))
+    return render_template('pages/auth.login.html', form=form)
 
-                else:
 
-                    flash("Nom d'utilisateur ou mot de passe erronee")
+@app.route("/add_user", methods=["GET", "POST"])
+def addUser():
 
-            else:
+    i_form: FlaskForm = InscrptionForm()
 
-                flash("Nom d'utilisateur inconnu. Veuillez vous enregistrer")
+    if request.method == "POST":
 
-    if request.method == "POST" and i_form.validate_on_submit():
-        user = User(name=i_form.name.data, email=i_form.email.data, password=generate_password_hash(i_form.password))
-        save_new_data(dbs=db, model=user)
-    return render_template('pages/auth.login.html', form=form, i_form=i_form)
+      print()
+
+      if i_form.validate_on_submit():
+
+        pwd = check_pwd(i_form.password.data, i_form.sec_password.data)
+
+        if not pwd == None:
+
+            i_form.password.data = pwd
+
+            user = User(name=i_form.name.data, email=i_form.email.data, password=i_form.password.data)
+
+            result = save_new_data(dbs=db, model=user)
+
+            if result == 0:
+
+              actualUser = find_user(dbs=db, identifier=i_form.email.data)
+
+              login_user(actualUser, remember=True)
+
+              return redirect(url_for('go_to_admin'))
+
+        else:
+
+            flash(" Something went wrong. The 2 passwords are not the same")
+
+      else:
+
+          flash("Veuillez renseigner tous les champs")
+
+    return render_template('pages/add_new_user.html', i_form=i_form)

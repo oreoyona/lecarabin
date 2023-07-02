@@ -41,6 +41,24 @@
     height: 32px;
     width: 32px;
   }
+  .auth_section{
+    width: 100vw !important;
+  }
+  #inscription-form{
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 25px !important;
+    align-items: flex-start !important;
+  }
+  .inscription-section-one{
+    width: max-content !important;
+  }
+  .inscription-section-two{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
 
 }
 html,
@@ -74,18 +92,6 @@ body {
   width: 100%;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: max-content;
-}
-.flashes{
-  position: absolute;
-  top: 12vh;
-  width: max-content;
-  padding: 25px;
-  background-color: rgba(60, 179, 113, 0.55);
-  color: mediumseagreen;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-
 }
 .primary-header {
   grid-column: 1/-1;
@@ -252,7 +258,7 @@ input::file-selector-button {
 .auth_section form{
   box-shadow: 0 0 10px #1facb61f, 0 0 5px #F8F9FA;
   padding: 20px;
-  height: 60%;
+  height: max-content;
   max-width: 250px;
   display: flex;
   flex-direction: column;
@@ -261,7 +267,7 @@ input::file-selector-button {
   border-radius: 10px;
 }
 #inscription-form{
-  display: none;
+  display: flex;
 }
 #alert-div .fading-away{
   opacity: 0;
@@ -270,6 +276,14 @@ input::file-selector-button {
 .info-center{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: center ;
 }
+
+#inscription_btn{
+  display: inline-flex;
+  justify-self: center;
+  align-self: center;
+}
+
+

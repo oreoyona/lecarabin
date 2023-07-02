@@ -1,12 +1,27 @@
+from functools import wraps
+import random
+import string
 from typing import Type
 from flask_sqlalchemy import SQLAlchemy
 from flask_sqlalchemy.model import Model
 from sqlalchemy import select
-
+from flask_login import current_user
 from models import Post, User
+from flask import abort, redirect, url_for
 
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'webp'}
 
+ROLES = {
+    'admin': 0,
+    'editor': 1,
+    'user': 2
+}
+
+ACCESS_LEVELS = {
+    'admin': ['admin', 'editor', 'user'],
+    'editor': ['editor', 'user'],
+    'user': ['user']
+}
 
 def save_to_db(dbs: SQLAlchemy, data: Type[Model | Post]):
     """Saves the model data to the database"""
@@ -32,9 +47,13 @@ def save_new_data(model: Type[Model or Post], dbs: SQLAlchemy):
     try:
         save_to_db(dbs, model)
 
+        return 0
+
     except Exception as e:
 
         write_log(e)
+
+        return -1
 
 
 def delete_from_db(dbs: SQLAlchemy, model: Type[Model | Post]):
@@ -89,4 +108,54 @@ def find_datum(dbs: SQLAlchemy, model: Type[Model | Post], model_id: int):
 def find_user(dbs: SQLAlchemy, identifier: str):
     """ finds a user by email from the databse """
 
-    return dbs.session.execute(select(User).where(User.email == identifier))
+    return dbs.session.query(User).filter_by(email=identifier).first()
+
+
+def role_required(role):
+    """ Decorator function to check and require role of the user"""
+
+    def wrapper(fn):
+        @wraps(fn)
+        def decorated_view(*args, **kwargs):
+            """ Checks if the user is authenticated"""
+
+            if not current_user.is_authenticated:
+                return redirect(url_for('login'))
+
+            if current_user.role not in ACCESS_LEVELS[role]:
+                abort(403)
+            return fn(*args, **args)
+
+        return decorated_view
+
+    return wrapper
+
+
+def check_pwd(pwd:str, pwd2: str):
+  """ Checks if two given password are the same"""
+
+  if pwd == pwd2:
+
+    return pwd
+
+  return None
+
+
+def generate_username(name: str):
+    """Generates a username based on the provided name"""
+    # Split the name into words
+    words = name.split()
+
+    # Combine the first letter of each word into a string
+    initials = ''.join([word[0] for word in words])
+
+    # Generate a random string of alphanumeric characters
+    random_chars = ''.join(random.choices(string.ascii_letters + string.digits, k=5))
+
+    # Combine the initials and random characters to form the username
+    username = initials + random_chars
+
+    # Truncate the username to a maximum of 10 characters
+    username = username[:10]
+
+    return username

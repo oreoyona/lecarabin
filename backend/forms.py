@@ -61,10 +61,13 @@ class InscrptionForm(FlaskForm):
 
     """ Defines the inscriptionUser form"""
 
+    name = StringField('name', validators=[DataRequired()])
+
     email = StringField("email", validators=[DataRequired()])
 
     password = StringField('password', validators=[DataRequired()])
 
-    name = StringField('name', validators=[DataRequired()])
+    sec_password = StringField('sec_password', validators=[DataRequired()])
+
 
     submit = SubmitField('Enregister')

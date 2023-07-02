@@ -1,0 +1,64 @@
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  <div class="alert alert-warning">
+  {% for message in messages %}
+    <spn>{{ message }}</spn>
+  {% endfor %}
+  </div>
+{% endif %}
+{% endwith %}
+<section class="auth_section">
+
+<form id="inscription-form" method="POST">
+  {{ i_form.csrf_token }}
+
+  <div class="inscription-section-one">
+    <div class="mb-3">
+
+      <label for="i-name" class="form-label">Name</label>
+
+      {{ i_form.name(class="form-control", id="i-name", placeholder="Ex: Yan Mukoka")}}
+
+    </div>
+
+    <div class="mb-3">
+
+      <label for="i-email" class="form-label">Email</label>
+
+      {{ i_form.email(class="form-control", id="i-email", placeholder="example@gmail.com")}}
+
+    </div>
+
+    <div class="mb-3">
+
+      <label for="i-pwd" class="form-label">Mot de passe</label>
+
+      {{ i_form.password(class="form-control", id="i-pwd", type='password', placeholder="*****")}}
+
+    </div>
+
+  </div>
+
+  <div class="inscription-section-two">
+    <div class="mb-3">
+
+      <label for="i-pwd" class="form-label">Confirmer le mot de passe</label>
+
+      {{ i_form.sec_password(class="form-control", id='c-pwd', type="password", placeholder="Repeat your password")}}
+    </div>
+
+    <br>
+    {{ i_form.submit(class="btn submitBtn", id='inscription_btn')}}
+    <span class="info-center m15 padX15">
+      Ou
+      <br>
+      <em>
+        <a class="btn btn-link " id="login-link" href="{{ url_for('loginUser') }}">Connectez-vous</a>
+      </em>
+    </span>
+  </div>
+
+</form>
+<script src="{{ url_for('static', filename='scripts/auth.js')}}"></script>
+
+</section>
