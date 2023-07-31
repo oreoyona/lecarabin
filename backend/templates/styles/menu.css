@@ -1,0 +1,37 @@
+@media screen and (max-width: 800px) {
+  .default-menu{
+    width: 90vw !important;
+  }
+}
+
+.default-menu{
+  height: 100%;
+  background-color: #E0FFFF;
+  transition: all ease-in-out .3s;
+  overflow: hidden;
+
+}
+.default-menu ul{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.default-menu ul li{
+  margin: 25px;
+  display: flex;
+  padding: 12px 5px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: transparent;
+}
+.default-menu ul li:hover, .default-menu ul li:active{
+  border: 1px solid #C5E0E0;
+  padding: 12px 5px;
+  background-color: #C5E0E0;
+  border-radius: 5px
+
+}

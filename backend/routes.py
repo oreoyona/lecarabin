@@ -1,6 +1,6 @@
 import os
 from flask import Blueprint, flash, render_template, redirect, request, url_for
-from flask_login import login_user, login_required
+from flask_login import login_user, login_required, current_user, AnonymousUserMixin, UserMixin
 from sqlalchemy import select
 from flask_wtf import FlaskForm
 from base import app, db
@@ -174,6 +174,10 @@ def save_new_category(post_id):
 @app.route('/admin/login', methods=['GET', 'POST'])
 def loginUser():
     """ Log in the user"""
+
+    if not isinstance(current_user, AnonymousUserMixin):
+
+      return redirect(url_for('go_to_admin'))
 
     form = LoginUserForm()
 

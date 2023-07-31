@@ -2,10 +2,10 @@
 
 <section class="header-burger" id="header-burger">
   {% if current_user.is_authenticated %}
-    <div>The User is Logged IN</div>
+  {% include 'components/auth-menu.component.html' %}
 
   {% else %}
-    <div>The User is Not connected</div>
+  {% include 'components/default-menu.component.html' %}
   {% endif %}
 </section>
 
@@ -22,7 +22,6 @@
     </section>
   </nav>
   <script src="{{ url_for('static', filename='scripts/header.js') }}"></script>
-
 </header>
 
 

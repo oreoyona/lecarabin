@@ -1,44 +1,37 @@
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-  <div class="alert alert-dark">
-  {% for message in messages %}
-    <spn>{{ message }}</spn>
-  {% endfor %}
-  </div>
-{% endif %}
-{% endwith %}
-
 <section class="auth_section">
+  {% with messages = get_flashed_messages() %} {% if messages %}
+  <div class="alert alert-dark">
+    {% for message in messages %}
+    <spn>{{ message }}</spn>
+    {% endfor %}
+  </div>
+  {% endif %} {% endwith %}
 
   <form id="login-form" method="POST">
-
     {{ form.csrf_token }}
 
-
     <div class="mb-3">
-
       <label for="email" class="form-label">Email</label>
 
-      {{ form.email(class="form-control", id="email", placeholder="example@gmail.com")}}
-
+      {{ form.email(class="form-control", id="email",
+      placeholder="example@gmail.com")}}
     </div>
 
     <div class="mb-3">
-
       <label for="pwd" class="form-label">Mot de passe</label>
 
-      {{ form.password(class="form-control", id="pwd", type='password', placeholder="*****")}}
-
+      {{ form.password(class="form-control", id="pwd", type='password',
+      placeholder="*****")}}
     </div>
 
-    <a href="{{url_for('addUser')}}" class="btn btn-link m15" id="new-account-link">Creer un compte</a>
+    <a
+      href="{{url_for('addUser')}}"
+      class="btn btn-link m15"
+      id="new-account-link"
+      >Creer un compte</a
+    >
     {{ form.submit(class="btn submitBtn", id='login_btn')}}
-
-
-
   </form>
 
   <script src="{{ url_for('static', filename='scripts/auth.js')}}"></script>
-
 </section>
-

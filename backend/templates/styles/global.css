@@ -59,6 +59,10 @@
     flex-direction: column !important;
     align-items: center !important;
   }
+  .primary-header{
+    border-bottom: 3px solid #13ACA7;
+
+  }
 
 }
 html,
@@ -66,7 +70,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  box-sizing: border-box
+  box-sizing: border-box;
+  background-color: #b0b0b0;
 }
 
 .mX15 {
@@ -95,7 +100,7 @@ body {
 }
 .primary-header {
   grid-column: 1/-1;
-  height: 10vh;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,7 +164,13 @@ img {
 .list-article-header {
   color: #13ACA7;
 }
+a{
+  color: #052629;
+}
 
+a:visited{
+  color: #1fadb6;
+}
 li, a{
   text-decoration: none;
 }
@@ -245,7 +256,6 @@ input::file-selector-button {
   align-self: center;
 }
 .auth_section{
- border-top: 1px solid #1fadb6;
   background-color: #F8F9FA;
   height: 100%;
   padding: 20px;
@@ -253,6 +263,7 @@ input::file-selector-button {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
 }
 
 .auth_section form{
@@ -285,5 +296,3 @@ input::file-selector-button {
   justify-self: center;
   align-self: center;
 }
-
-
