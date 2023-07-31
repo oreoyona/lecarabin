@@ -237,8 +237,8 @@ a:hover{
   border: 1px solid inherit;
   border-radius: 15px;
   background-color: gray;
-  user-select: none;
   -webkit-user-select: none;
+  user-select: none;
   cursor: pointer;
 }
 input::file-selector-button {
